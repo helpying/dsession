@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+	<filter>
+		<filter-name>SessionFilter</filter-name>
+		<filter-class>com.kim.session.http.SessionFilter</filter-class>
+		<init-param>
+			<param-name>identify</param-name>
+			<param-value>uid</param-value>
+		</init-param>
+		<init-param>
+			<param-name>class</param-name>
+			<param-value>com.kim.session.access.impl.XMemcachedAccessGenerator</param-value>
+		</init-param>
+		<init-param>
+			<param-name>sys_addresses</param-name>
+			<param-value>localhost:11211</param-value>
+		</init-param>
+		<init-param>
+			<param-name>sys_expire</param-name>
+			<param-value>60</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>SessionServlet</servlet-name>
+		<servlet-class>com.kim.session.http.SessionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SessionServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>

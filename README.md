@@ -1,6 +1,3 @@
-dSession
-========
-
 Distributed session for JEE using Memcached
 
 ##Usage:
